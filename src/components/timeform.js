@@ -1,13 +1,29 @@
 import React, { Component } from 'react';
 
+import moment from 'moment';
+
 class TimeForm extends Component {
+    constructor() {
+        super();
+
+        // Set the default time
+        let defTime = moment(new Date()).add(1, 'days');
+
+        this.state = {
+            cycleTime: defTime,
+            ampm: 'AM'
+        };
+    }
 
     // TODO: Add 12-hour and 24-hour formats
     render() {
         return (
             <div className="row level fluid-container">
                 <div className="col-fluid input-control">
-                    <select id='hour'>
+                    <select
+                        id='hour'
+                        onChange={ (e) => this.setHours(e.target.value) }
+                    >
                         <option>(hours)</option>
                         <option>1</option>
                         <option>2</option>
@@ -24,7 +40,10 @@ class TimeForm extends Component {
                     </select>
                 </div>
                 <div className="col-fluid input-control">
-                    <select id='minute'>
+                    <select
+                        id='minute'
+                        onChange={ (e) => this.setMinutes(e.target.value) }
+                    >
                         <option>(minutes)</option>
                         <option>00</option>
                         <option>05</option>
@@ -41,13 +60,23 @@ class TimeForm extends Component {
                     </select>
                 </div>
                 <div className="col-fluid input-control">
-                    <select id='ampm'>
+                    <select
+                        id='ampm'
+                        onChange={ (e) => this.setAMPM(e.target.value) }
+                    >
                         <option>AM</option>
                         <option>PM</option>
                     </select>
                 </div>
             </div>
         );
+    }
+
+    setHours(hour) {
+        let curTime = this.state.cycleTime;
+        curTime.hours(hour);
+        this.setState({ cycleTime: curTime });
+        console.log(this.state);
     }
 }
 
