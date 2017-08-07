@@ -72,11 +72,35 @@ class TimeForm extends Component {
         );
     }
 
-    setHours(hour) {
-        let curTime = this.state.cycleTime;
-        curTime.hours(hour);
+    setHours(hour, ampm = this.state.ampm) {
+        let cycleTime = this.state.cycleTime; // The time the user wants to wake up
+
+        // Add extra 12 hours if PM
+        if (ampm === 'PM' && hour < 12)
+            hour = +hour + 12; // Prepend with plus to make hour numerical
+        else if (ampm === 'AM' && hour === '12') // Special case if user inputs 12 AM
+            hour = 0;
+        
+        cycleTime.hours(hour);
+
+        this.setState({ cycleTime: cycleTime });
+    }
+
+    setMinutes(minutes) {
+        let curTime = this.state.cycleTime; // The time the user wants to wake up
+        curTime.minutes(minutes);
         this.setState({ cycleTime: curTime });
-        console.log(this.state);
+    }
+
+    setAMPM(ampm) {
+        console.log(ampm);
+        if (ampm === 'AM')
+            this.setState({ ampm: 'AM' });
+        else
+            this.setState({ ampm: 'PM' });
+
+        // Also update hours
+        this.setHours(this.state.cycleTime._d.getHours(), ampm); // Update time when am/pm changes
     }
 }
 
