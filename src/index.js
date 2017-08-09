@@ -3,15 +3,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 // Redux stuff
-import { createStore } from 'redux';
+import { createStore, applyMiddleware  } from 'redux';
 import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
 
 // Import the main app body
 import App from './components/app';
 import rootReducer from './reducers';
 
 // Main store object for storing data
-const store = createStore(rootReducer);
+const store = createStore(rootReducer, applyMiddleware(thunk));
 store.subscribe(() => console.log('store', store.getState()));
 
 ReactDOM.render(
