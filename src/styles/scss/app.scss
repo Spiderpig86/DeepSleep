@@ -1,0 +1,11 @@
+.overflow-container {
+    position: absolute;
+    width: 100%;
+    margin: 0 0 3rem;
+    left: 0;
+    overflow: hidden;
+}
+
+#cycleContainer:first-child {
+    margin-left: 5rem;
+}

@@ -6,17 +6,19 @@ import CycleCard from './cyclecard';
 class CycleList extends Component {
     render() {
         return (
-            <div>
-                {
-                    this.props.cycleTimes.map((cycle, index) => {
-                        return (
-                            <CycleCard 
-                                key={index}
-                                cycle={cycle}
-                            />
-                        )
-                    })
-                }
+            <div className="overflow-container">
+                <div className="row flex expand" id="cycleContainer">
+                    {
+                        this.props.cycleTimes.map((cycle, index) => {
+                            return (
+                                <CycleCard 
+                                    key={index}
+                                    cycle={cycle}
+                                />
+                            )
+                        })
+                    }
+                </div>
             </div>
         );
     }
