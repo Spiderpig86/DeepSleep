@@ -75,6 +75,9 @@ class TimeForm extends Component {
     }
 
     setHours(hour, ampm = this.state.ampm) {
+        if (this.isFieldsValid())
+            return;
+            
         let curTime = this.state.cycleTime; // The time the user wants to wake up
 
         // Add extra 12 hours if PM
@@ -94,6 +97,9 @@ class TimeForm extends Component {
     }
 
     setMinutes(minutes) {
+        if (this.isFieldsValid())
+            return;
+
         let curTime = this.state.cycleTime; // The time the user wants to wake up
         curTime.minutes(minutes);
         this.setState({ cycleTime: curTime });
@@ -101,6 +107,8 @@ class TimeForm extends Component {
     }
 
     setAMPM(ampm) {
+        if (this.isFieldsValid())
+            return;
         if (ampm === 'AM')
             this.setState({ ampm: 'AM' });
         else
@@ -113,6 +121,10 @@ class TimeForm extends Component {
 
     updateCycles(time) {
         this.props.getCycles(time);
+    }
+
+    isFieldsValid() {
+        return (isNaN(document.querySelector('#hour').value) || isNaN(document.querySelector('#minute').value)); // Return true only if the time inputs are all numerical
     }
 }
 

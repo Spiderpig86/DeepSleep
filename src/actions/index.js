@@ -20,7 +20,7 @@ export function getCycles(time) {
         // Calculate the different 90 minute intervals
         let cycles = [];
         let tempTime = moment(time); // Create new object to stop it from altering the original
-        for (let i = 6; i >= 1; i--) {
+        for (let i = 7; i >= 1; i--) {
             cycles.push({
                 type: (i < 3 ? TYPE_NAP: TYPE_SLEEP),
                 cycleCount: i,

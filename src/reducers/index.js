@@ -11,6 +11,14 @@ function cycleTimes(state = [], action) {
     }
 }
 
+// Used to hold what current sleep cycle is selected
+function selectedCycle(state = [], action) {
+    switch (action.type) {
+        default: 
+            return state;
+    }
+}
+
 const rootReducer = combineReducers({ cycleTimes });
 
 export default rootReducer;

@@ -5,11 +5,20 @@
     left: 0;
     overflow: hidden;
 
-    .cycle-item h6 {
+    .cycle-item h4 {
         margin-bottom: 0;
     }
 }
 
-#cycleContainer .cycle-item:first-child {
-    margin-left: 5rem;
+#cycleContainer {
+    .cycle-item:first-child {
+        margin-left: 5rem;
+    }
+
+    .cycle-item {
+        margin: 0 .5rem;
+        padding: 5rem 0;
+    }
 }
+
+
