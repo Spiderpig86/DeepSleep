@@ -7,7 +7,7 @@ import '../styles/css/app.css';
 class CycleList extends Component {
     render() {
         return (
-            <div className="overflow-container">
+            <div className="overflow-container text-center">
                 <div className="row flex expand" id="cycleContainer">
                     {
                         this.props.cycleTimes.map((cycle, index) => {

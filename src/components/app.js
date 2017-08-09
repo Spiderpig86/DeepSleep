@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import TimeForm from './timeform';
 import CycleList from './cyclelist';
+import CycleStats from './cyclestats';
 import '../styles/css/cirrus.min.css'; // Need to import to use stylesheet
 
 class App extends Component {
@@ -13,7 +14,10 @@ class App extends Component {
                         <h3>DeepSleep</h3>
                         <h6>When do you want to wake up?</h6>
                         <TimeForm />
-                        <CycleList />
+                    </div>
+                    <CycleList />
+                    <div className="content">
+                        <CycleStats />
                     </div>
                 </div>
             </div>

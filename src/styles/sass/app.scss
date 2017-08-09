@@ -1,5 +1,17 @@
+// TODO: Separate and import different style sections in the future
+
+// Mixins
+@mixin animated($duration) {
+    -webkit-transition: all $duration;
+    transition: all $duration;
+}
+
+// Classes
+.hero-body {
+    flex-direction: column;
+}
+
 .overflow-container {
-    position: absolute;
     width: 100%;
     margin: 0 0 3rem;
     left: 0;
@@ -14,10 +26,16 @@
     .cycle-item:first-child {
         margin-left: 5rem;
     }
+    
+    .cycle-item:last-child {
+        margin-right: 5rem;
+    }
 
     .cycle-item {
         margin: 0 .5rem;
         padding: 5rem 0;
+        cursor: pointer;
+        @include animated(.3s);
     }
 }
 

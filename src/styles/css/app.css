@@ -1,5 +1,7 @@
+.hero-body {
+  flex-direction: column; }
+
 .overflow-container {
-  position: absolute;
   width: 100%;
   margin: 0 0 3rem;
   left: 0;
@@ -10,5 +12,12 @@
 #cycleContainer .cycle-item:first-child {
   margin-left: 5rem; }
 
+#cycleContainer .cycle-item:last-child {
+  margin-right: 5rem; }
+
 #cycleContainer .cycle-item {
-  margin: 0 .5rem; }
+  margin: 0 .5rem;
+  padding: 5rem 0;
+  cursor: pointer;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s; }

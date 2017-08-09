@@ -2,6 +2,7 @@ import moment from 'moment';
 
 // Declare action consts
 export const UPDATE_SLEEP_CYCLES = 'UPDATE_SLEEP_CYCLES'; // Const for updating times to fall asleep
+export const UPDATE_SELECTED_CYCLE = 'UPDATE_SELECTED_CYCLE'; // Const for updating the sleep stats component
 
 // Export types of sleep
 export const TYPE_NAP = 'NAP';
@@ -16,7 +17,7 @@ function updateSleepCycles(cycles) {
 
 export function getCycles(time) {
     // Time is a moment object with hours, minutes, and seconds already set
-    return function(dispatch) { // Relies on thunk middleware
+    return (dispatch) => { // Relies on thunk middleware
         // Calculate the different 90 minute intervals
         let cycles = [];
         let tempTime = moment(time); // Create new object to stop it from altering the original
@@ -31,5 +32,13 @@ export function getCycles(time) {
 
         // Dispatch action to reducer 
         dispatch(updateSleepCycles(cycles));
+    }
+}
+
+// Update selected cycle action creator
+export function updateSelectedCycle(cycle) {
+    return {
+        type: UPDATE_SELECTED_CYCLE,
+        cycle
     }
 }

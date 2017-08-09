@@ -6,8 +6,18 @@ import { connect } from 'react-redux';
 class CycleStats extends Component {
     render() {
         return (
-            <div></div>
+            <div>
+                <h6>Sleep Cycle Stats</h6>
+                <div className="divider"></div>
+                <p>{ 'Sleep for: ' + this.props.selectedCycle.duration + 'minutes' }</p>
+            </div>
         );
+    }
+}
+
+function mapStateToProps(state) {
+    return {
+        selectedCycle: state.selectedCycle
     }
 }
 
