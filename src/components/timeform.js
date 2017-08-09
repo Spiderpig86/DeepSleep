@@ -75,7 +75,6 @@ class TimeForm extends Component {
     }
 
     setHours(hour, ampm = this.state.ampm) {
-        console.log(this.state.cycleTime);
         let curTime = this.state.cycleTime; // The time the user wants to wake up
 
         // Add extra 12 hours if PM
@@ -108,7 +107,8 @@ class TimeForm extends Component {
             this.setState({ ampm: 'PM' });  
 
         // Also update hours
-        this.setHours(document.querySelector('#hour').value, ampm); // Update time when am/pm changes
+        if (!isNaN(document.querySelector('#hour').value)) // Only update if the hour field is numerical
+            this.setHours(document.querySelector('#hour').value, ampm); // Update time when am/pm changes
     }
 
     updateCycles(time) {

@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class CycleCard extends Component {
     render() {
         return (
-            <div className="frame col-4">
+            <div className="frame col-4 cycle-item">
                 <div className="frame-head">
                     <h6>{ this.props.cycle.cycleCount }</h6>
                     <p className="no-margin info text-center">cycles</p>

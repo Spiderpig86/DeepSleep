@@ -4,8 +4,12 @@
     margin: 0 0 3rem;
     left: 0;
     overflow: hidden;
+
+    .cycle-item h6 {
+        margin-bottom: 0;
+    }
 }
 
-#cycleContainer:first-child {
+#cycleContainer .cycle-item:first-child {
     margin-left: 5rem;
 }

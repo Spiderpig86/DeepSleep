@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import CycleCard from './cyclecard';
+import '../styles/css/app.css';
 
 class CycleList extends Component {
     render() {

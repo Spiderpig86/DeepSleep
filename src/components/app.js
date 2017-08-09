@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import TimeForm from './timeform';
 import CycleList from './cyclelist';
-import '../styles/cirrus.min.css'; // Need to import to use stylesheet
+import '../styles/css/cirrus.min.css'; // Need to import to use stylesheet
 
 class App extends Component {
     
