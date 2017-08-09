@@ -1,2 +1,2 @@
 # Project DeepSleep
-Stuff coming soon
+A sleep calculator powered by React.

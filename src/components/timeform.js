@@ -105,7 +105,7 @@ class TimeForm extends Component {
         if (ampm === 'AM')
             this.setState({ ampm: 'AM' });
         else
-            this.setState({ ampm: 'PM' });
+            this.setState({ ampm: 'PM' });  
 
         // Also update hours
         this.setHours(document.querySelector('#hour').value, ampm); // Update time when am/pm changes

@@ -12,7 +12,7 @@ function updateSleepCycles(cycles) {
 
 export function getCycles(time) {
     // Time is a moment object with hours, minutes, and seconds already set
-    return function(dispatch) {
+    return function(dispatch) { // Relies on thunk middleware
         // Calculate the different 90 minute intervals
         let cycles = [];
         let tempTime = moment(time); // Create new object to stop it from altering the original
@@ -22,8 +22,6 @@ export function getCycles(time) {
                 cycleStart: moment(tempTime).subtract(90 * i, 'minutes') // Create new moment objects with different offsets
             });
         }
-
-        console.log(cycles);
 
         // Dispatch action to reducer 
         dispatch(updateSleepCycles(cycles));
