@@ -15,7 +15,6 @@ function cycleTimes(state = [], action) {
 function selectedCycle(state = [], action) {
     switch (action.type) {
         case UPDATE_SELECTED_CYCLE:
-            console.log(action.cycle);
             return action.cycle;
         default: 
             return state;

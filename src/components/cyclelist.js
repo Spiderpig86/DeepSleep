@@ -8,18 +8,30 @@ class CycleList extends Component {
     render() {
         return (
             <div className="overflow-container text-center">
-                <div className="row flex expand" id="cycleContainer">
-                    {
-                        this.props.cycleTimes.map((cycle, index) => {
-                            return (
-                                <CycleCard 
-                                    key={index}
-                                    cycle={cycle}
-                                />
-                            )
-                        })
-                    }
-                </div>
+                { this.props.cycleTimes.length === 0 ? 
+                        <div className="placeholder">
+                            <div className="placeholder-icon">
+                                <span className="icon">
+                                    <i className="fa fa-people"></i>
+                                </span>
+                            </div>
+                            <h5 className="title">No cycles to show.</h5>
+                            <p className="subtitle">Select a time to get started.</p>
+                        </div>
+                        :
+                        <div className="row flex expand" id="cycleContainer">
+                            {
+                                this.props.cycleTimes.map((cycle, index) => {
+                                    return (
+                                        <CycleCard 
+                                            key={index}
+                                            cycle={cycle}
+                                        />
+                                    )
+                                })
+                            }
+                        </div>
+                }
             </div>
         );
     }
