@@ -26,6 +26,7 @@ export function getCycles(time) {
                 type: (i < 3 ? TYPE_NAP: TYPE_SLEEP),
                 cycleCount: i,
                 cycleStart: moment(tempTime).subtract(90 * i, 'minutes'), // Create new moment objects with different offsets
+                cycleEnd: moment(tempTime),
                 duration: 90 * i
             });
         }

@@ -6,18 +6,22 @@
   margin: 0 0 3rem;
   left: 0;
   overflow: hidden; }
-  .overflow-container .cycle-item h4 {
-    margin-bottom: 0; }
 
-#cycleContainer .cycle-item:first-child {
-  margin-left: 5rem; }
-
-#cycleContainer .cycle-item:last-child {
-  margin-right: 5rem; }
-
-#cycleContainer .cycle-item {
-  margin: 0 .5rem;
-  padding: 5rem 0;
-  cursor: pointer;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s; }
+#cycleContainer {
+  padding: 3rem 0; }
+  #cycleContainer .cycle-item:first-child {
+    margin-left: 5rem; }
+  #cycleContainer .cycle-item:last-child {
+    margin-right: 5rem; }
+  #cycleContainer .cycle-item {
+    margin: 0 .5rem;
+    padding: 5rem 0;
+    cursor: pointer;
+    border-width: 1px;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s; }
+    #cycleContainer .cycle-item:hover {
+      transform: scale(1.1);
+      box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 4px 20px 0 rgba(0, 0, 0, 0.19);
+      -webkit-transition: all 0.3s;
+      transition: all 0.3s; }

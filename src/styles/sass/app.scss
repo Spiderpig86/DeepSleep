@@ -16,13 +16,11 @@
     margin: 0 0 3rem;
     left: 0;
     overflow: hidden;
-
-    .cycle-item h4 {
-        margin-bottom: 0;
-    }
 }
 
 #cycleContainer {
+    padding: 3rem 0;
+
     .cycle-item:first-child {
         margin-left: 5rem;
     }
@@ -35,7 +33,14 @@
         margin: 0 .5rem;
         padding: 5rem 0;
         cursor: pointer;
+        border-width: 1px;
         @include animated(.3s);
+
+        &:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0 rgba(0,0,0,0.19);
+            @include animated(.3s);
+        }
     }
 }
 
