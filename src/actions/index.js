@@ -15,19 +15,22 @@ function updateSleepCycles(cycles) {
     }
 }
 
-export function getCycles(time) {
+export function getCycles(timeObj) {
     // Time is a moment object with hours, minutes, and seconds already set
     return (dispatch) => { // Relies on thunk middleware
         // Calculate the different 90 minute intervals
         let cycles = [];
-        let tempTime = moment(time); // Create new object to stop it from altering the original
+        let tempTime = moment(timeObj.time); // Create new object to stop it from altering the original
+        let sleepDuration = 0;
         for (let i = 7; i >= 1; i--) {
+            sleepDuration = timeObj.sleepCycleLength * i; // Calculate the time actually sleeping with accounting for average time to fall asleep
             cycles.push({
                 type: (i < 3 ? TYPE_NAP: TYPE_SLEEP),
                 cycleCount: i,
-                cycleStart: moment(tempTime).subtract(90 * i, 'minutes'), // Create new moment objects with different offsets
+                cycleStart: moment(tempTime).subtract(sleepDuration, 'minutes'), // Create new moment objects with different offsets
                 cycleEnd: moment(tempTime),
-                duration: 90 * i
+                duration: sleepDuration,
+                bedTimeStart: moment(tempTime).subtract(sleepDuration + timeObj.fallAsleepTime, 'minutes'), // Calculate time to go to bed before actually sleeping
             });
         }
 

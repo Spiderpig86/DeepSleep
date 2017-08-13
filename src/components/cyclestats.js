@@ -19,6 +19,7 @@ class CycleStats extends Component {
                     </thead>
 
                     <tbody>
+                        <tr><th>Bedtime</th><td>{ this.props.selectedCycle.length === 0 ? 'N/A' : this.props.selectedCycle.bedTimeStart.format('hh:mm a') }</td></tr>
                         <tr><th>Start</th><td>{ this.props.selectedCycle.length === 0 ? 'N/A' : this.props.selectedCycle.cycleStart.format('hh:mm a') }</td></tr>
                         <tr><th>End</th><td>{ this.props.selectedCycle.length === 0 ? 'N/A' : this.props.selectedCycle.cycleEnd.format('hh:mm a') }</td></tr>
                         <tr><th>Duration</th><td>{ this.props.selectedCycle.length === 0 ? 'N/A' : this.props.selectedCycle.duration + ' minutes' }</td></tr>

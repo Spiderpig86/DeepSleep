@@ -12,9 +12,10 @@ class TimeForm extends Component {
 
         this.state = {
             cycleTime: defTime,
-            ampm: 'AM'
+            ampm: 'AM',
+            sleepCycleLength: 90,
+            fallAsleepTime: 14
         };
-        console.log(defTime);
     }
 
     // TODO: Add 12-hour and 24-hour formats
@@ -75,24 +76,38 @@ class TimeForm extends Component {
                 <div className="center">
                     <button id="btnMore">More Options</button>
                 </div>
-                <div className="content" id="moreOptions">
-                    <h6>More Options</h6>
-                    <div className="form-group">
-                        <label className="form-group-label">Time to fall asleep</label>
-                        <input className="form-group-input" type="number" min="0" defaultValue="14" />
-                    </div>
-                    <div className="form-group">
-                        <label className="form-group-label">Average Sleep Cycle</label>
-                        <select className="select form-group-input" defaultValue="90">
-                            <option>81</option>
-                            <option>84</option>
-                            <option>87</option>
-                            <option>90</option>
-                            <option>93</option>
-                            <option>96</option>
-                            <option>99</option>
-                            <option>102</option>
-                        </select>
+                <div id="moreOptions">
+                    <div className="content">
+                        <h6>More Options</h6>
+                        <div className="form-group">
+                            <label className="form-group-label">Time to fall asleep</label>
+                            <input
+                                className="form-group-input"
+                                type="number"
+                                min="0"
+                                defaultValue="14"
+                                onChange={(e) => this.setState({ fallAsleepTime: e.target.value })}
+                            />
+                        </div>
+                        <span className="info text-center">Average time to fall asleep is 14 minutes.</span>
+                        <div className="form-group">
+                            <label className="form-group-label">Average Sleep Cycle</label>
+                            <select
+                                className="select form-group-input"
+                                defaultValue="90"
+                                onChange={(e) => this.setState({ sleepCycleLength: e.target.value })}
+                            >
+                                <option>81</option>
+                                <option>84</option>
+                                <option>87</option>
+                                <option>90</option>
+                                <option>93</option>
+                                <option>96</option>
+                                <option>99</option>
+                                <option>102</option>
+                            </select>
+                        </div>
+                        <span className="info text-center">Average sleep cycle is 90 minutes.</span>
                     </div>
                 </div>
             </div>
@@ -145,7 +160,11 @@ class TimeForm extends Component {
     }
 
     updateCycles(time) {
-        this.props.getCycles(time);
+        this.props.getCycles({
+            time: time,
+            sleepCycleLength: this.state.sleepCycleLength,
+            fallAsleepTime: this.state.fallAsleepTime
+        });
     }
 
     isFieldsValid() {

@@ -10,9 +10,6 @@ $card_item_color: #fff;
 }
 
 // Classes
-.hero-body {
-    flex-direction: column;
-}
 
 .overflow-container {
     width: 100%;
@@ -48,7 +45,28 @@ $card_item_color: #fff;
     }
 }
 
+#moreOptions {
+    padding: 2rem 0;
+    overflow: hidden;
+
+    &.content {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 769px) {
+    #moreOptions {
+        padding: 2rem;
+    }
+}
+
+
 // Cirrus mods
+.hero-body {
+    flex-direction: column;
+    padding: 3rem 0;
+}
+
 .form-group-label {
     white-space: nowrap;
 }
