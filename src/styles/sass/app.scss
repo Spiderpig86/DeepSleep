@@ -1,5 +1,8 @@
 // TODO: Separate and import different style sections in the future
 
+// Vars
+$card_item_color: #fff;
+
 // Mixins
 @mixin animated($duration) {
     -webkit-transition: all $duration;
@@ -34,6 +37,7 @@
         padding: 5rem 0;
         cursor: pointer;
         border-width: 1px;
+        background: $card_item_color;
         @include animated(.3s);
 
         &:hover {
@@ -44,4 +48,7 @@
     }
 }
 
-
+// Cirrus mods
+.form-group-label {
+    white-space: nowrap;
+}
