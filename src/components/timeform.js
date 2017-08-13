@@ -73,10 +73,13 @@ class TimeForm extends Component {
                         </select>
                     </div>
                 </div>
-                <div className="center">
-                    <button id="btnMore">More Options</button>
+                <div className="center content">
+                    <button
+                        id="btnMore"
+                        onClick={() => this.toggleOptions() }
+                    >More Options</button>
                 </div>
-                <div id="moreOptions">
+                <div id="optionsContainer">
                     <div className="content">
                         <h6>More Options</h6>
                         <div className="form-group">
@@ -169,6 +172,10 @@ class TimeForm extends Component {
 
     isFieldsValid() {
         return (isNaN(document.querySelector('#hour').value) || isNaN(document.querySelector('#minute').value)); // Return true only if the time inputs are all numerical
+    }
+
+    toggleOptions() {
+        document.querySelector('#optionsContainer').classList.toggle('active');
     }
 }
 

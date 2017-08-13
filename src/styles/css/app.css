@@ -19,24 +19,39 @@
     -webkit-transition: all 0.3s;
     transition: all 0.3s; }
     #cycleContainer .cycle-item:hover {
+      -webkit-transform: scale(1.1);
       transform: scale(1.1);
+      -webkit-box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 4px 20px 0 rgba(0, 0, 0, 0.19);
       box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 4px 20px 0 rgba(0, 0, 0, 0.19);
       -webkit-transition: all 0.3s;
       transition: all 0.3s; }
 
-#moreOptions {
-  padding: 2rem 0;
-  overflow: hidden; }
-  #moreOptions.content {
+#optionsContainer {
+  max-height: 0;
+  padding: 0;
+  overflow: hidden;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s; }
+  #optionsContainer.active {
+    padding: 2rem 0;
+    max-height: 100vh; }
+  #optionsContainer.content {
     width: 100%; }
 
 @media screen and (min-width: 769px) {
-  #moreOptions {
-    padding: 2rem; } }
+  #optionsContainer {
+    padding: 0 2rem; }
+    #optionsContainer.active {
+      padding: 2rem; } }
 
 .hero-body {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
-  padding: 3rem 0; }
+  padding: 3rem 0 !important;
+  -webkit-transition: all .3s;
+  transition: all .3s; }
 
 .form-group-label {
   white-space: nowrap; }
