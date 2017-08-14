@@ -21,16 +21,18 @@ export function getCycles(timeObj) {
         // Calculate the different 90 minute intervals
         let cycles = [];
         let tempTime = moment(timeObj.time); // Create new object to stop it from altering the original
-        let sleepDuration = 0;
+        
         for (let i = 7; i >= 1; i--) {
-            sleepDuration = timeObj.sleepCycleLength * i; // Calculate the time actually sleeping with accounting for average time to fall asleep
+            let sleepDuration = timeObj.sleepCycleLength * i; // Calculate the time actually sleeping with accounting for average time to fall asleep
+            let bedTime = sleepDuration + +timeObj.fallAsleepTime; // Need the plus signs to force this to evaluate this as a number, not a string
+
             cycles.push({
                 type: (i < 3 ? TYPE_NAP: TYPE_SLEEP),
                 cycleCount: i,
                 cycleStart: moment(tempTime).subtract(sleepDuration, 'minutes'), // Create new moment objects with different offsets
                 cycleEnd: moment(tempTime),
                 duration: sleepDuration,
-                bedTimeStart: moment(tempTime).subtract(sleepDuration + timeObj.fallAsleepTime, 'minutes'), // Calculate time to go to bed before actually sleeping
+                bedTimeStart: moment(tempTime).subtract(bedTime, 'minutes') // Calculate time to go to bed before actually sleeping
             });
         }
 

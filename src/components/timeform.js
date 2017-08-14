@@ -89,7 +89,7 @@ class TimeForm extends Component {
                                 type="number"
                                 min="0"
                                 defaultValue="14"
-                                onChange={(e) => this.setState({ fallAsleepTime: e.target.value })}
+                                onChange={(e) => this.setFallAsleepTime(e.target.value) }
                             />
                         </div>
                         <span className="info text-center">Average time to fall asleep is 14 minutes.</span>
@@ -98,7 +98,7 @@ class TimeForm extends Component {
                             <select
                                 className="select form-group-input"
                                 defaultValue="90"
-                                onChange={(e) => this.setState({ sleepCycleLength: e.target.value })}
+                                onChange={(e) => this.setSleepCycleLength(e.target.value) }
                             >
                                 <option>81</option>
                                 <option>84</option>
@@ -118,8 +118,6 @@ class TimeForm extends Component {
     }
 
     setHours(hour, ampm = this.state.ampm) {
-        if (this.isFieldsValid())
-            return;
             
         let curTime = this.state.cycleTime; // The time the user wants to wake up
 
@@ -129,48 +127,55 @@ class TimeForm extends Component {
         else if (ampm === 'AM' && hour === '12') // Special case if user inputs 12 AM
             hour = 0;
 
-        console.log(hour);
-        
         curTime.hours(hour);
 
         this.setState({ cycleTime: curTime });
-        console.log('setState', this.state.cycleTime);
 
-        this.updateCycles(curTime);
+        if (this.isNotFieldsValid())
+            return;
+        this.updateCycles(this.state)
     }
 
     setMinutes(minutes) {
-        if (this.isFieldsValid())
-            return;
-
         let curTime = this.state.cycleTime; // The time the user wants to wake up
         curTime.minutes(minutes);
+
         this.setState({ cycleTime: curTime });
-        this.updateCycles(curTime);
+        if (this.isNotFieldsValid())
+            return;
+        this.updateCycles(this.state)
     }
 
     setAMPM(ampm) {
-        if (this.isFieldsValid())
-            return;
         if (ampm === 'AM')
             this.setState({ ampm: 'AM' });
         else
-            this.setState({ ampm: 'PM' });  
+            this.setState({ ampm: 'PM' }); 
 
         // Also update hours
         if (!isNaN(document.querySelector('#hour').value)) // Only update if the hour field is numerical
             this.setHours(document.querySelector('#hour').value, ampm); // Update time when am/pm changes
     }
 
-    updateCycles(time) {
+    setFallAsleepTime(minutes) {
+        this.setState({ fallAsleepTime: minutes }, this.updateCycles(this.state, null, minutes));
+    }
+
+    setSleepCycleLength(length) {
+        this.setState({ sleepCycleLength: length }, this.updateCycles(this.state, length, null));
+        
+    }
+
+    updateCycles(state, _sleepCycleLength, _fallAsleepTime) {
+        // Method is designed this way since updating state is async, so the latest values may not be updated already
         this.props.getCycles({
-            time: time,
-            sleepCycleLength: this.state.sleepCycleLength,
-            fallAsleepTime: this.state.fallAsleepTime
+            time: state.cycleTime,
+            sleepCycleLength: _sleepCycleLength || state.sleepCycleLength,
+            fallAsleepTime: _fallAsleepTime || state.fallAsleepTime
         });
     }
 
-    isFieldsValid() {
+    isNotFieldsValid() {
         return (isNaN(document.querySelector('#hour').value) || isNaN(document.querySelector('#minute').value)); // Return true only if the time inputs are all numerical
     }
 

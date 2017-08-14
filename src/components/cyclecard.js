@@ -37,7 +37,6 @@ class CycleCard extends Component {
     }
 
     updateCycleStatsContainer(payload) {
-        console.log(payload);
         this.props.updateSelectedCycle(payload); // Pass in the current cycle object and always use the method from props
     }
 }
