@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'; // Combine into one root reducer
-import { UPDATE_SLEEP_CYCLES, UPDATE_SELECTED_CYCLE } from '../actions/index'; // Import the action creator
+import { UPDATE_SLEEP_CYCLES, UPDATE_SELECTED_CYCLE, CLEAR_SELECTED_CYCLE } from '../actions/index'; // Import the action creator
 
 // Reducer that stores the times
 function cycleTimes(state = [], action) {
@@ -16,6 +16,8 @@ function selectedCycle(state = [], action) {
     switch (action.type) {
         case UPDATE_SELECTED_CYCLE:
             return action.cycle;
+        case CLEAR_SELECTED_CYCLE:
+            return [];
         default: 
             return state;
     }

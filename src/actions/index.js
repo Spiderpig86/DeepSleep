@@ -3,6 +3,7 @@ import moment from 'moment';
 // Declare action consts
 export const UPDATE_SLEEP_CYCLES = 'UPDATE_SLEEP_CYCLES'; // Const for updating times to fall asleep
 export const UPDATE_SELECTED_CYCLE = 'UPDATE_SELECTED_CYCLE'; // Const for updating the sleep stats component
+export const CLEAR_SELECTED_CYCLE = 'CLEAR_SELECTED_CYCLE'; // For when we want to clear the selected cycle
 
 // Export types of sleep
 export const TYPE_NAP = 'NAP';
@@ -38,6 +39,7 @@ export function getCycles(timeObj) {
 
         // Dispatch action to reducer 
         dispatch(updateSleepCycles(cycles));
+        dispatch(clearSelectedCycle()); // Clear selected cycle data
     }
 }
 
@@ -46,5 +48,11 @@ export function updateSelectedCycle(cycle) {
     return {
         type: UPDATE_SELECTED_CYCLE,
         cycle
+    }
+}
+
+export function clearSelectedCycle() {
+    return {
+        type: CLEAR_SELECTED_CYCLE
     }
 }

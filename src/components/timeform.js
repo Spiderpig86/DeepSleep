@@ -158,7 +158,7 @@ class TimeForm extends Component {
     }
 
     setFallAsleepTime(minutes) {
-        this.setState({ fallAsleepTime: minutes }, this.updateCycles(this.state, null, minutes));
+        this.setState({ fallAsleepTime: minutes }, this.updateCycles(this.state, null, minutes)); // PAss updating cycles as a callback
     }
 
     setSleepCycleLength(length) {
@@ -170,7 +170,7 @@ class TimeForm extends Component {
         // Method is designed this way since updating state is async, so the latest values may not be updated already
         this.props.getCycles({
             time: state.cycleTime,
-            sleepCycleLength: _sleepCycleLength || state.sleepCycleLength,
+            sleepCycleLength: _sleepCycleLength || state.sleepCycleLength, // Update the values if they are immediately edited since the states do not update right away
             fallAsleepTime: _fallAsleepTime || state.fallAsleepTime
         });
     }
