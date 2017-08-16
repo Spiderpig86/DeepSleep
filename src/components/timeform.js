@@ -77,7 +77,7 @@ class TimeForm extends Component {
                     <button
                         id="btnMore"
                         onClick={() => this.toggleOptions() }
-                    >More Options</button>
+                    ><span className="icon"><i className="fa fa-chevron-down small"></i></span> More Options</button>
                 </div>
                 <div id="optionsContainer">
                     <div className="content">
@@ -181,6 +181,10 @@ class TimeForm extends Component {
 
     toggleOptions() {
         document.querySelector('#optionsContainer').classList.toggle('active');
+        if (document.querySelector('#optionsContainer').classList.contains('active'))
+            document.getElementById('btnMore').innerHTML = '<span class="icon"><i class="fa fa-chevron-up small"></i></span> Less Options';
+        else
+            document.getElementById('btnMore').innerHTML = '<span class="icon"><i class="fa fa-chevron-down small"></i></span> More Options';
     }
 }
 
