@@ -65,6 +65,15 @@ $card_item_color: #fff;
 
 #tabs {
     width: 100%;
+
+    .tabpage {
+        display: none;
+        min-height: 50vh;
+
+        &.shown {
+            display: block;
+        }
+    }
 }
 
 @media screen and (min-width: 769px) {
