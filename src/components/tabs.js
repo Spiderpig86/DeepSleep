@@ -2,6 +2,7 @@ import React from 'react';
 import TimeForm from './timeform';
 import CycleList from './cyclelist';
 import CycleStats from './cyclestats';
+import WakeUpList from './wakeuplist';
 
 export const Tabs = (props) => {
     return (
@@ -19,7 +20,7 @@ export const Tabs = (props) => {
             <space className='large'></space>
             <div className='tabpage shown'>
                 <div className='content text-center'>
-                    <h6>When do you want to wake up?</h6>
+                    <h6>I want to wake up at...</h6>
                     <TimeForm />
                 </div>
                 <CycleList />
@@ -29,6 +30,9 @@ export const Tabs = (props) => {
             </div>
 
             <div className='tabpage'>
+                <div className='content text-center'>
+                    <h6>If you sleep now, wake up at...</h6>
+                </div>
 
             </div>
         </div>

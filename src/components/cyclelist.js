@@ -5,6 +5,10 @@ import CycleCard from './cyclecard';
 import '../styles/css/app.css';
 
 class CycleList extends Component {
+    constructor() {
+
+    }
+    
     render() {
         return (
             <div className="overflow-container text-center">

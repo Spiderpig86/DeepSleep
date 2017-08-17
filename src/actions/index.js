@@ -4,11 +4,18 @@ import moment from 'moment';
 export const UPDATE_SLEEP_CYCLES = 'UPDATE_SLEEP_CYCLES'; // Const for updating times to fall asleep
 export const UPDATE_SELECTED_CYCLE = 'UPDATE_SELECTED_CYCLE'; // Const for updating the sleep stats component
 export const CLEAR_SELECTED_CYCLE = 'CLEAR_SELECTED_CYCLE'; // For when we want to clear the selected cycle
+export const UPDATE_WAKEUP_TIMES = 'UPDATE_WAKEUP_TIMES'; // Used to get the times the user should wakeup
 
 // Export types of sleep
 export const TYPE_NAP = 'NAP';
 export const TYPE_SLEEP = 'SLEEP';
 
+/**
+ * Update the sleep cycles when the user falls asleep at a specified time in the UI
+ * 
+ * @param {any} cycles 
+ * @returns 
+ */
 function updateSleepCycles(cycles) {
     return {
         type: UPDATE_SLEEP_CYCLES,
@@ -16,6 +23,13 @@ function updateSleepCycles(cycles) {
     }
 }
 
+/**
+ * Calculates the times that the user should fall asleep
+ * 
+ * @export
+ * @param {any} timeObj - the Moment.js object with the times
+ * @returns 
+ */
 export function getCycles(timeObj) {
     // Time is a moment object with hours, minutes, and seconds already set
     return (dispatch) => { // Relies on thunk middleware
@@ -54,5 +68,35 @@ export function updateSelectedCycle(cycle) {
 export function clearSelectedCycle() {
     return {
         type: CLEAR_SELECTED_CYCLE
+    }
+}
+
+export function getWakeUpTimes(timeObj) {
+    // Use middleware to help get the wake up time objects
+    return (dispatch) => {
+        let wakeUpTimes = []; // Stores the times the user should wake up after sleep cycles
+        let tempTime = moment(timeObj.time); // Create a new moment object based on time passed in
+        
+        // Calculate the possible wakeup times
+        for (let i = 0; i < 7; i++) {
+            let sleepDuration = timeObj.sleepCycleLength * i; // Calculate the time actually sleeping with accounting for average time to fall asleep
+
+            wakeUpTimes.push({
+                type: (i < 3 ? TYPE_NAP: TYPE_SLEEP),
+                cycleCount: i,
+                cycleStart: moment(tempTime),
+                cycleEnd: moment(tempTime).add(sleepDuration, 'minutes'), // Add minutes to tell us when to wake up
+                duration: sleepDuration,
+                bedTimeStart: 'N/A'
+            });
+        }
+    }
+}
+
+// Update the times to wake up
+export function updateWakeUpTimes(wakeUpTimes) {
+    return {
+        type: UPDATE_WAKEUP_TIMES,
+        wakeUpTimes
     }
 }

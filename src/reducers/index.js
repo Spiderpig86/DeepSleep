@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'; // Combine into one root reducer
-import { UPDATE_SLEEP_CYCLES, UPDATE_SELECTED_CYCLE, CLEAR_SELECTED_CYCLE } from '../actions/index'; // Import the action creator
+import { UPDATE_SLEEP_CYCLES, UPDATE_SELECTED_CYCLE, CLEAR_SELECTED_CYCLE, UPDATE_WAKEUP_TIMES } from '../actions/index'; // Import the action creator
 
 // Reducer that stores the times
 function cycleTimes(state = [], action) {
@@ -23,6 +23,16 @@ function selectedCycle(state = [], action) {
     }
 }
 
-const rootReducer = combineReducers({ cycleTimes, selectedCycle });
+// Used to store the times the person would wake up if they went to sleep now
+function wakeUpTimes(state = [], action) {
+    switch (action.type) {
+        case UPDATE_WAKEUP_TIMES:
+            return action.wakeUpTimes; // Update with new payload
+        default:
+            return state;
+    }
+}
+
+const rootReducer = combineReducers({ cycleTimes, selectedCycle, wakeUpTimes });
 
 export default rootReducer;
