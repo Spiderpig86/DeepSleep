@@ -16,7 +16,7 @@ class CycleCard extends Component {
                 </div>
                 <div className="frame-body">
                     <div className="content">
-                        <p className="no-margin">{ this.props.cycle.cycleStart.calendar() }</p>
+                        <p className="no-margin">{ this.props.isWake ? this.props.cycle.cycleEnd.calendar() : this.props.cycle.cycleStart.calendar() }</p>
                         <p className="no-margin">{ this.capitalizeFromCaps(this.props.cycle.type) + ' for ' + this.minutesToHoursString(this.props.cycle.duration) }</p>
                     </div>
                 </div>

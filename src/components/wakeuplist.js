@@ -6,6 +6,7 @@ import CycleCard from './cyclecard';
 import '../styles/css/app.css';
 
 class WakeUpList extends Component {
+
     render() {
         return (
             <div className="overflow-container text-center">
@@ -16,6 +17,7 @@ class WakeUpList extends Component {
                                 <CycleCard 
                                     key={index}
                                     cycle={cycle}
+                                    isWake={true}
                                 />
                             )
                         })
@@ -28,7 +30,7 @@ class WakeUpList extends Component {
 
 function mapStateToProps(state) {
     return {
-        wakeUpTimes: this.state.wakeUpTimes
+        wakeUpTimes: state.wakeUpTimes
     }
 }
 

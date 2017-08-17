@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Tabs } from './tabs';
+import Tabs from './tabs';
 import '../styles/css/cirrus.min.css'; // Need to import to use stylesheet
 import './tabcontrol.jsx'; // Import the tabs library
 import { setUpTabs } from '../tabloader.jsx'; // Import the JS to bind the tabs

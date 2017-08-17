@@ -71,6 +71,7 @@ export function clearSelectedCycle() {
     }
 }
 
+// Get the times to wake up based on current time
 export function getWakeUpTimes(timeObj) {
     // Use middleware to help get the wake up time objects
     return (dispatch) => {
@@ -78,7 +79,7 @@ export function getWakeUpTimes(timeObj) {
         let tempTime = moment(timeObj.time); // Create a new moment object based on time passed in
         
         // Calculate the possible wakeup times
-        for (let i = 0; i < 7; i++) {
+        for (let i = 1; i <= 7; i++) {
             let sleepDuration = timeObj.sleepCycleLength * i; // Calculate the time actually sleeping with accounting for average time to fall asleep
 
             wakeUpTimes.push({
@@ -87,14 +88,18 @@ export function getWakeUpTimes(timeObj) {
                 cycleStart: moment(tempTime),
                 cycleEnd: moment(tempTime).add(sleepDuration, 'minutes'), // Add minutes to tell us when to wake up
                 duration: sleepDuration,
-                bedTimeStart: 'N/A'
+                bedTimeStart: null
             });
         }
+
+        // Dispatch the action creators
+        dispatch(updateWakeUpTimes(wakeUpTimes));
+        dispatch(clearSelectedCycle()); // Clear selected cycle data
     }
 }
 
 // Update the times to wake up
-export function updateWakeUpTimes(wakeUpTimes) {
+function updateWakeUpTimes(wakeUpTimes) {
     return {
         type: UPDATE_WAKEUP_TIMES,
         wakeUpTimes
