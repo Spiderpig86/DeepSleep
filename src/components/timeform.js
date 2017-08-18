@@ -89,6 +89,7 @@ class TimeForm extends Component {
                                 type="number"
                                 min="0"
                                 defaultValue="14"
+                                id="fallAsleepTime"
                                 onChange={(e) => this.setFallAsleepTime(e.target.value) }
                             />
                         </div>
@@ -98,6 +99,7 @@ class TimeForm extends Component {
                             <select
                                 className="select form-group-input"
                                 defaultValue="90"
+                                id="sleepCycleLength"
                                 onChange={(e) => this.setSleepCycleLength(e.target.value) }
                             >
                                 <option>81</option>
@@ -158,12 +160,20 @@ class TimeForm extends Component {
     }
 
     setFallAsleepTime(minutes) {
-        this.setState({ fallAsleepTime: minutes }, this.updateCycles(this.state, null, minutes)); // PAss updating cycles as a callback
+        this.setState({ fallAsleepTime: minutes }); // PAss updating cycles as a callback
+
+        if (this.isNotFieldsValid()) // Do not update cycles if user has not entered time
+            return;
+
+        this.updateCycles(this.state, null, minutes);
     }
 
     setSleepCycleLength(length) {
-        this.setState({ sleepCycleLength: length }, this.updateCycles(this.state, length, null));
+        this.setState({ sleepCycleLength: length });
         
+        if (this.isNotFieldsValid()) // Do not update cycles if user has not entered time
+            return;
+        this.updateCycles(this.state, length, null);
     }
 
     updateCycles(state, _sleepCycleLength, _fallAsleepTime) {

@@ -85,10 +85,10 @@ export function getWakeUpTimes(timeObj) {
             wakeUpTimes.push({
                 type: (i < 3 ? TYPE_NAP: TYPE_SLEEP),
                 cycleCount: i,
-                cycleStart: moment(tempTime),
+                cycleStart: moment(tempTime).add(timeObj.fallAsleepTime, 'minutes'),
                 cycleEnd: moment(tempTime).add(sleepDuration, 'minutes'), // Add minutes to tell us when to wake up
                 duration: sleepDuration,
-                bedTimeStart: null
+                bedTimeStart: moment(tempTime)
             });
         }
 

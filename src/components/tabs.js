@@ -42,7 +42,8 @@ class Tabs extends Component {
     
                 <div className='tabpage'>
                     <div className='content text-center'>
-                        <h6>If you sleep now, wake up at...</h6>
+                        <h6>If I sleep now, wake up at...</h6>
+                        <p className='info no-margin'>Options carried over from other tab.</p>
                     </div>
                     <WakeUpList />
                     <div className="content">
@@ -56,7 +57,8 @@ class Tabs extends Component {
     updateWakeUpTimeTab() {
         this.props.getWakeUpTimes({
             time: moment(),
-            sleepCycleLength: 90
+            sleepCycleLength: document.querySelector('#sleepCycleLength').value || 90,
+            fallAsleepTime: document.querySelector('#fallAsleepTime').value || 14
         }); // Pass in the current time as the parameter
     }
 }
