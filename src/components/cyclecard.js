@@ -6,8 +6,9 @@ class CycleCard extends Component {
 
     render() {
         return (
-            <div
-                className="frame col-3 cycle-item"
+            <a
+                href="#cycleStats"
+                className="frame col-3 cycle-item smoothScroll"
                 onClick={() => this.updateCycleStatsContainer(this.props.cycle) }    
             >
                 <div className="frame-head">
@@ -20,7 +21,7 @@ class CycleCard extends Component {
                         <p className="no-margin">{ this.capitalizeFromCaps(this.props.cycle.type) + ' for ' + this.minutesToHoursString(this.props.cycle.duration) }</p>
                     </div>
                 </div>
-            </div>
+            </a>
         );
     }
 

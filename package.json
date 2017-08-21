@@ -23,7 +23,7 @@
     "react-scripts": "1.0.10"
   },
   "scripts": {
-    "start": "react-scripts start gulp watch",
+    "start": "react-scripts start && gulp watch",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"

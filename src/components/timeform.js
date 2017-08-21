@@ -76,6 +76,7 @@ class TimeForm extends Component {
                 <div className="center content">
                     <button
                         id="btnMore"
+                        className='btn-accent'
                         onClick={() => this.toggleOptions() }
                     ><span className="icon"><i className="fa fa-chevron-down small"></i></span> More Options</button>
                 </div>

@@ -1,7 +1,7 @@
 // TODO: Separate and import different style sections in the future
 
 // Vars
-$card_item_color: #fff;
+$card_item_color: #212e53;
 
 // Mixins
 @mixin animated($duration) {
@@ -10,6 +10,17 @@ $card_item_color: #fff;
 }
 
 // Classes
+h1, h2, h3, h4, h5, h6,
+.content h1, .content h2, .content h3, .content h4, .content h5, .content h6,
+table, .tab-container li a, {
+    color: rgba(255, 255, 255, 0.80);
+}
+
+body {
+    background: #141E30;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #14172a, #141E30);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #14172a, #141E30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */        
+}
 
 .overflow-container {
     width: 100%;
@@ -33,7 +44,7 @@ $card_item_color: #fff;
         margin: 0 .5rem;
         padding: 5rem 0;
         cursor: pointer;
-        border-width: 1px;
+        border: none;
         background: $card_item_color;
         @include animated(.3s);
 
@@ -100,4 +111,13 @@ $card_item_color: #fff;
 
 .form-group-label {
     white-space: nowrap;
+    color: #fff;
+    background: #415079;
+    border-color: #394a7b;
+}
+
+input[type=number], select:not([multiple]) {
+    background: #212e53;
+    color: #fff;
+    border: 1px solid #394a7b;
 }
