@@ -1,10 +1,10 @@
-# Project DeepSleep
+# :bridge_at_night: Project DeepSleep
 ### What is it?
-Project DeepSleep is designed to be a sleep calculator powered by React. With this, sleep times are calculated and rendered much faster. Project DeepSleep will easily calculate the right times to sleep depending on the info you enter and when you should wake up if you sleep right away.
+Project DeepSleep is designed to be a sleep calculator powered by React. With this, sleep times are calculated and rendered much faster. Enter when you would like to wake up and DeepSleep calculates sleep cycle times on when would be the best times to sleep to wake up feeling energized. It also tells you when to wake up if you decide to sleep at the current time.
 
 ### Built With
-Project was build with React and Cirrus.
+* :rocket: [React](https://github.com/facebook/react)
+* :cloud: [Cirrus](https://github.com/Spiderpig86/Cirrus)
 
 ### Todo
 * Improve mobile responsiveness.
-* Create a dark theme for the application.

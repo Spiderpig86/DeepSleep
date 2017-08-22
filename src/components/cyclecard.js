@@ -9,7 +9,8 @@ class CycleCard extends Component {
             <a
                 href="#cycleStats"
                 className="frame col-3 cycle-item smoothScroll"
-                onClick={() => this.updateCycleStatsContainer(this.props.cycle) }    
+                onClick={() => this.updateCycleStatsContainer(this.props.cycle)}
+                style={{background: this.setBgColor()}}
             >
                 <div className="frame-head">
                     <h4>{ this.props.cycle.cycleCount }</h4>
@@ -39,6 +40,28 @@ class CycleCard extends Component {
 
     updateCycleStatsContainer(payload) {
         this.props.updateSelectedCycle(payload); // Pass in the current cycle object and always use the method from props
+    }
+
+    setBgColor() {
+        // Update color based on cycle
+        switch (this.props.cycle.cycleCount) {
+            case 7:
+                return '#524364';
+            case 6:
+                return '#5a5386';
+            case 5:
+                return '#4873a6';
+            case 4:
+                return '#4c9ed0';
+            case 3:
+                return '#40c8c4';
+            case 2:
+                return '#25cc9e';
+            case 1:
+                return '#14d060';
+            default:
+                return '#212e53';
+        }
     }
 }
 

@@ -10,9 +10,6 @@ import WakeUpList from './wakeuplist';
 
 
 class Tabs extends Component {
-    constructor() {
-        super();
-    }
 
     render() {
         return (
