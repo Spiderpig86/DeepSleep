@@ -6,10 +6,22 @@ table, .tab-container li a {
 body {
   background: #141E30;
   /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #1e2a36, #0d2946);
+  background: -webkit-linear-gradient(to right, #1e2a36, #0C2846);
   /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #1e2a36, #0d2946);
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ }
+
+#background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(transparent, rgba(30, 42, 54, 0.9)), url("../../img/background.jpg");
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: cover;
+  z-index: -1; }
 
 .overflow-container {
   width: 100%;
@@ -98,4 +110,7 @@ input[type=number], select:not([multiple]) {
   border-bottom: 1px solid rgba(219, 219, 219, 0.15); }
 
 a p {
+  color: #fff; }
+
+.info {
   color: #fff; }
