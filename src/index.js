@@ -13,7 +13,7 @@ import rootReducer from './reducers';
 
 // Main store object for storing data. Also add middleware for async and intermediate functions
 const store = createStore(rootReducer, applyMiddleware(thunk));
-store.subscribe(() => console.log('store', store.getState())); // Log any updates to the store
+//store.subscribe(() => console.log('store', store.getState())); // Log any updates to the store
 
 ReactDOM.render(
     <Provider store={store}>
