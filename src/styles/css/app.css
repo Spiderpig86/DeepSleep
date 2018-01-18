@@ -4,12 +4,14 @@ table, .tab-container li a {
   color: rgba(255, 255, 255, 0.8); }
 
 body {
-  background: #141E30;
+  background: #1b2536;
   /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #1e2a36, #0C2846);
+  background: -webkit-linear-gradient(to right, #1a2536, #1b2536);
   /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #1e2a36, #0d2946);
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ }
+  background: linear-gradient(to right, #1a2536, #1b2536);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background-color: #1b2536;
+  /* Fix the scrollbar showing up as white */ }
 
 #background {
   position: absolute;
@@ -40,6 +42,7 @@ body {
     padding: 5rem 0;
     cursor: pointer;
     border: none;
+    max-width: 20rem;
     background: #212e53;
     -webkit-transition: all 0.3s;
     transition: all 0.3s; }
@@ -114,3 +117,7 @@ a p {
 
 .info {
   color: #fff; }
+
+@media screen and (max-width: 768px) {
+  .overflow-container .cycle-item {
+    width: 70% !important; } }

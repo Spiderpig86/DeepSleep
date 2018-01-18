@@ -7,7 +7,7 @@ class CycleCard extends Component {
     render() {
         return (
             <a
-                href="#cycleStats"
+                href="#cyclestats"
                 className="frame col-3 cycle-item smoothScroll"
                 onClick={() => this.updateCycleStatsContainer(this.props.cycle)}
                 style={{background: this.setBgColor()}}

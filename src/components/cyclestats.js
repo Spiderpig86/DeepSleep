@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 class CycleStats extends Component {
     render() {
         return (
-            <div id="cycleStats">
+            <div id="cyclestats">
                 <h6>Sleep Cycle Stats</h6>
                 <div className="divider"></div>
 
